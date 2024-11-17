@@ -15,98 +15,133 @@ await HAL_Delay(2000); //2 segundos
 //NO TOCAR
 //NO TOCAR
 //NO TOCAR
-async function while1_help(){
+async function while1_help() {
     await while1();
     setTimeout(while1_help, 50);
-}
-async function exec_1_time_help(){
+  }
+  async function exec_1_time_help() {
     await exec_1_time();
     await while1_help();
-}
-try {
-    exec_1_time_help();
-} catch (e) {
-  console.error(e);
-  while1();
-}
-//FIN NO TOCAR
-//FIN NO TOCAR
-//FIN NO TOCAR
-//FIN NO TOCAR
-
-//DECLARACION DE VARIABLES
-
-
-//FIN DECLARACION DE VARIABLES
-
-
-// FUNCIONES DE USUARIO
-/*
-        IMPORTANTE NO OLVIDARSE DE LO SIGUIENTE SI NO VA A FALLAR EL CODIGO
-        SE CREAN CON ASYNC Y SE EJECUTAN CON AWAIT
-            
-            EJEMPLO
-            async function gestionarBotones(ms) {
-                //CODIGO
-            }
-
-            await gestionarBotones();
-
-*/
-
-
-
-//FIN FUNCIONES DE USUARIO
-
-
-
-
-//CODIGO QUE SE EJECUTA ANTES DEL WHILE(1)
-async function exec_1_time() {
-//EJEMPLO DE CODIGO
-    for (let i = 0; i < 8; i++) {
-        tm1638_Led(i, 1);
-        await HAL_Delay(100);
-    }
-    for (let i = 0; i < 8; i++) {
-        tm1638_Led(7-i, 0);
-        await HAL_Delay(100);
-    }
-    tm1638_DisplayChar(0, "a");
-    tm1638_DisplayChar(7, "a");
-  
-  await HAL_Delay(2000);
-  tm1638_DisplayTxt("HOLA");
-  await HAL_Delay(1000);
-  //SE ESPERA QUE MUESTRE ERROR DADO QUE LA LONGITUD DE LA CADENA ES MAYOR A 8
-  //tm1638_DisplayTxt("AAAAAAAAAAAAAA");
-  await HAL_Delay(1000);
-//FIN DE EJEMPLO
-}
-//BUCLE INFINITO
-async function while1() {
-//EJEMPLO DE CODIGO
-    tm1638_Led(0, statusLed);
-    statusLed = !statusLed;
-  
-    tm1638_DisplayTxt(statusDisplay++);
-  
-    if (tm1638_KeyState(tm1638_ScanButtons(), 1) == true) {
-      statusDisplay += 1000;
-    }
-    await HAL_Delay(100);
-//FIN EJEMPLO CODIGO
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
+  try {
+    exec_1_time_help();
+  } catch (e) {
+    console.error(e);
+    while1();
+  }
+  //FIN NO TOCAR
+  //FIN NO TOCAR
+  //FIN NO TOCAR
+  //FIN NO TOCAR
+  
+  //DECLARACION DE VARIABLES
+  
+  let tiempo = [0, 0, 0, 0];
+  
+  //FIN DECLARACION DE VARIABLES
+  
+  // FUNCIONES DE USUARIO
+  /*
+          IMPORTANTE NO OLVIDARSE DE LO SIGUIENTE SI NO VA A FALLAR EL CODIGO
+          SE CREAN CON ASYNC Y SE EJECUTAN CON AWAIT
+              
+              EJEMPLO
+              async function gestionarBotones(ms) {
+                  //CODIGO
+              }
+  
+              await gestionarBotones();
+  
+  */
+  function showDisplays() {
+    for (let i = 0; i < 4; i++) {
+      tm1638_DisplayChar(i, tiempo[i]);
+    }
+  }
+  
+  function detenerContador() {
+    showDisplays();
+  }
+  
+  function reiniciarContador() {
+    for (let i = 0; i < 4; i++) {
+      tiempo[i] = 0;
+    }
+    showDisplays();
+  }
+  function contarHaciaDelante() {
+    tiempo[3]++;
+  
+    for (let i = 3; i > 0; i--) {
+      if (tiempo[i] > 9) {
+        tiempo[i - 1]++;
+  
+        tiempo[i] = 0;
+      }
+    }
+  
+    if (tiempo[0] > 9) {
+      tiempo[0] = 0;
+    }
+  
+    showDisplays();
+  }
+  function contarHaciaAtras() {
+    tiempo[3]--;
+  
+    for (let i = 3; i > 0; i--) {
+      if (tiempo[i] < 0) {
+        tiempo[i - 1]--;
+  
+        tiempo[i] = 9;
+      }
+    }
+    if (tiempo[0] < 0) {
+      tiempo[0] = 9;
+    }
+  
+    showDisplays();
+  }
+  
+  function iniciarContador() {
+    for (let i = 0; i < 4; i++) {
+      tiempo[i] = 0;
+    }
+    globalBotonSeleccionado = 3;
+  }
+  
+  function cambiarOperacion(botonSeleccionado) {
+    switch (botonSeleccionado) {
+      case 0:
+        detenerContador();
+        break;
+      case 1:
+        reiniciarContador();
+        break;
+      case 2:
+        contarHaciaDelante();
+        break;
+      case 3:
+        contarHaciaAtras();
+        break;
+      case 4:
+        iniciarContador();
+        break;
+    }
+  }
+  //FIN FUNCIONES DE USUARIO
+  
+  //CODIGO QUE SE EJECUTA ANTES DEL WHILE(1)
+  async function exec_1_time() {
+    tm1638_DisplayClear();
+  
+  }
+  //BUCLE INFINITO
+  async function while1() {
+      cambiarOperacion(globalBotonSeleccionado);
+      await HAL_Delay(100);
+    //FIN EJEMPLO CODIGO
+  }
+  
+  
+  
