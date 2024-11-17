@@ -1,6 +1,6 @@
-# Simulador STM1638
+# Simulador TM1638
 
-Este proyecto es un simulador de la placa STM1638, creado como parte de la asignatura de Sistemas Digitales. El simulador proporciona una interfaz para simular todas las funciones que se enseñan en la asignatura para manejar la placa. 
+Este proyecto es un simulador de la placa periférica TM1638, creado como parte de la asignatura de Sistemas Digitales. El simulador proporciona una interfaz para simular todas las funciones que se enseñan en la asignatura para manejar la placa. 
 
 ## Cómo utilizar el simulador
 
