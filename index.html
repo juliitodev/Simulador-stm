@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SIMULADOR TM1638</title>
+    <script>
+      var globalBotonSeleccionado =0;
+    </script>
+    <script defer src="tm1638.js"></script>
+    <script defer src="interrupciones.js"></script>
+    <script defer src="main.js"></script>
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>SIMULADOR TM1638</h1>
+
+
+    <div class="leds">
+      <div class="led"id="led1"></div>
+      <div class="led" id="led2"></div>
+      <div class="led" id="led3"></div>
+      <div class="led" id="led4"></div>
+      <div class="led" id="led5"></div>
+      <div class="led" id="led6"></div>
+      <div class="led" id="led7"></div>
+      <div class="led" id="led8"></div>
+    </div>
+
+    <div>
+      <!--<div class="pantalla">00000000</div>-->
+      <div id="vertical-center">
+        <div id="clock-container">
+          <div
+            id="display-1"
+            class="display-container display-size-12 display-no-0"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-2"
+            class="display-container display-size-12 display-no-1"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-3"
+            class="display-container display-size-12 display-no-2"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-4"
+            class="display-container display-size-12 display-no-3"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-5"
+            class="display-container display-size-12 display-no-4"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-6"
+            class="display-container display-size-12 display-no-5"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-7"
+            class="display-container display-size-12 display-no-6"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+          <div
+            id="display-8"
+            class="display-container display-size-12 display-no-7"
+          >
+            <div class="segment-x segment-a">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-b">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-c">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-d">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-e">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-y segment-f">
+              <span class="segment-border"></span>
+            </div>
+            <div class="segment-x segment-g">
+              <span class="segment-border"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="botones">
+      <button class="boton" id="boton-0"></button>
+      <button class="boton" id="boton-1"></button>
+      <button class="boton" id="boton-2"></button>
+      <button class="boton" id="boton-3"></button>
+      <button class="boton" id="boton-4"></button>
+      <button class="boton" id="boton-5"></button>
+      <button class="boton" id="boton-6"></button>
+      <button class="boton" id="boton-7"></button>
+    </div>
+
+    <h2> EJEMPLO HECHO POR <a href="https://instagram.com/juliitodev">@Juliitodev</a></h2>
+  </body>
+</html>
