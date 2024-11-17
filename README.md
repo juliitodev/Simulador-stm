@@ -20,7 +20,7 @@ Ya que es una simulacion en javascript y no ejecuta c tendrás que seguir los si
 1. Reemplaza las declaraciones de variables int,char,char[] por let.
 2. Reemplaza las declaraciones de arrays {1,2,3} por [1,2,3].
 3. Elimina los tipos de datos en los parámetros de las funciones es decir pintar(int num) pasa a pintar(num).
-4. Quitar de las funciones la referencia al TM es decir de ```tm1638_DisplayChar(&TM ,7, "a")`````` pasaría a ```tm1638_DisplayChar(7, "a");```
+4. Quitar de las funciones la referencia al TM es decir de ```tm1638_DisplayChar(&TM ,7, "a")``` pasaría a ```tm1638_DisplayChar(7, "a");```
 
 
 El archivo main.js se estructura de la siguiente manera para simular el main.c
