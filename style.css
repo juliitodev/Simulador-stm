@@ -359,13 +359,13 @@ body {
   .display-W .segment-c {
     opacity: 0.1;
   }
-  .display-Ç .segment-a,
-  .display-Ç .segment-b,
-  .display-Ç .segment-c,
-  .display-Ç .segment-d,
-  .display-Ç .segment-e,
-  .display-Ç .segment-f,
-  .display-Ç .segment-g {
+  .display-_ .segment-a,
+  .display-_ .segment-b,
+  .display-_ .segment-c,
+  .display-_ .segment-d,
+  .display-_ .segment-e,
+  .display-_ .segment-f,
+  .display-_ .segment-g {
     opacity: 0.1;
   }
   .display-X .segment-f,

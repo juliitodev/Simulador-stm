@@ -7,38 +7,38 @@ var display5 = document.getElementById("display-5");
 var display6 = document.getElementById("display-6");
 var display7 = document.getElementById("display-7");
 var display8 = document.getElementById("display-8");
-var DISPLAY = "ÇÇÇÇÇÇÇÇ";
+var DISPLAY = "________";
 function setdisplays(s) {
   s = s.toString().toUpperCase();
   if (s.length > 8) {
     s = "ERROR"
     console.error("La longitud de la cadena no puede ser mayor a 8");
 };
-  s = s.padStart(8, "Ç");
+  s = s.padStart(8, "_");
   DISPLAY = s;
   actualizaDisplay();
 }
 function actualizaDisplay() {
   var baseClass = "display-container display-size-12 display-";
 
-  display1.className = baseClass + (DISPLAY[0] || "Ç");
-  display2.className = baseClass + (DISPLAY[1] || "Ç");
-  display3.className = baseClass + (DISPLAY[2] || "Ç");
-  display4.className = baseClass + (DISPLAY[3] || "Ç");
-  display5.className = baseClass + (DISPLAY[4] || "Ç");
-  display6.className = baseClass + (DISPLAY[5] || "Ç");
-  display7.className = baseClass + (DISPLAY[6] || "Ç");
-  display8.className = baseClass + (DISPLAY[7] || "Ç");
+  display1.className = baseClass + (DISPLAY[0] || "_");
+  display2.className = baseClass + (DISPLAY[1] || "_");
+  display3.className = baseClass + (DISPLAY[2] || "_");
+  display4.className = baseClass + (DISPLAY[3] || "_");
+  display5.className = baseClass + (DISPLAY[4] || "_");
+  display6.className = baseClass + (DISPLAY[5] || "_");
+  display7.className = baseClass + (DISPLAY[6] || "_");
+  display8.className = baseClass + (DISPLAY[7] || "_");
 
   //document.body.style.backgroundColor = '#' + (s + m + h).toString(16);
 }
 actualizaDisplay();
 function displayClear() {
-  setdisplays("ÇÇÇÇÇÇÇÇ");
+  setdisplays("________");
 }
 function ledOn(number) {
   var display = document.getElementById("display-" + number);
-  display.className = "display-container display-size-12 display-Ç";
+  display.className = "display-container display-size-12 display-_";
 }
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -112,7 +112,7 @@ function tm1638_ReadKey() {
 
 function logActivity() {
   console.log("Botones", tm1638_ScanButtons());
-  console.log("DISPLAY", DISPLAY.replace(/Ç/g, ""));
+  console.log("DISPLAY", DISPLAY.replace(/_/g, ""));
   //console.log("LEDS");
 }
 function tm1638_KeyState(buttons, position) {
